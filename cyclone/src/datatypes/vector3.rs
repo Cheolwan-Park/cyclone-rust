@@ -1,3 +1,4 @@
+#[derive(Copy, Clone, Debug)]
 pub struct Vector3 {
     pub x: f64,
     pub y: f64,
@@ -56,18 +57,6 @@ impl Vector3 {
             x: a.y*b.z - a.z*b.y,
             y: a.z*b.x - a.x*b.z,
             z: a.x*b.y - a.y*b.x
-        }
-    }
-}
-
-impl std::marker::Copy for Vector3 { }
-
-impl std::clone::Clone for Vector3 {
-    fn clone(&self) -> Self {
-        Self {
-            x: self.x,
-            y: self.y,
-            z: self.z
         }
     }
 }
@@ -215,15 +204,5 @@ impl std::ops::Mul<Vector3> for f64 {
 impl std::fmt::Display for Vector3 {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "({}, {}, {})", self.x, self.y, self.z)
-    }
-}
-
-impl std::fmt::Debug for Vector3 {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.debug_struct("Vector3")
-        .field("x", &self.x)
-        .field("y", &self.y)
-        .field("z", &self.z)
-        .finish()
     }
 }
