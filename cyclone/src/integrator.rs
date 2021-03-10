@@ -1,3 +1,3 @@
 pub trait Integratable {
-    fn integrate(&mut self, duration: f64);
+  fn integrate(&mut self, duration: f32);
 }
