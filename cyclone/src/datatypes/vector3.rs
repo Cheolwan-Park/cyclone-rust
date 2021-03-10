@@ -1,8 +1,8 @@
 #[derive(Copy, Clone, Debug)]
 pub struct Vector3 {
-  pub x: f64,
-  pub y: f64,
-  pub z: f64
+  pub x: f32,
+  pub y: f32,
+  pub z: f32
 }
 
 impl Vector3 {
@@ -10,7 +10,7 @@ impl Vector3 {
     Self { x: 0.0, y: 0.0, z: 0.0 }
   }
 
-  pub fn new(x: f64, y: f64, z: f64) -> Self {
+  pub fn new(x: f32, y: f32, z: f32) -> Self {
     Self { x, y, z }
   }
 
@@ -24,11 +24,11 @@ impl Vector3 {
     Self { x: -self.x, y: -self.y, z: -self.z }
   }
 
-  pub fn square_length(&self) -> f64 {
+  pub fn square_length(&self) -> f32 {
     self.x*self.x + self.y*self.y + self.z*self.z
   }
 
-  pub fn length(&self) -> f64 {
+  pub fn length(&self) -> f32 {
     self.square_length().sqrt()
   }
 
@@ -48,7 +48,7 @@ impl Vector3 {
     }
   }
 
-  pub fn dot(a: &Self, b: &Self) -> f64 {
+  pub fn dot(a: &Self, b: &Self) -> f32 {
     a.x*b.x + a.y*b.y + a.z*b.z
   }
 
@@ -125,10 +125,10 @@ impl std::ops::DivAssign for Vector3 {
   }
 }
 
-impl std::ops::Div<f64> for Vector3 {
+impl std::ops::Div<f32> for Vector3 {
   type Output = Self;
 
-  fn div(self, rhs: f64) -> Self::Output {
+  fn div(self, rhs: f32) -> Self::Output {
     if rhs == 0.0 {
       panic!("cannot divide by zero");
     }
@@ -141,8 +141,8 @@ impl std::ops::Div<f64> for Vector3 {
   }
 }
 
-impl std::ops::DivAssign<f64> for Vector3 {
-  fn div_assign(&mut self, rhs: f64) {
+impl std::ops::DivAssign<f32> for Vector3 {
+  fn div_assign(&mut self, rhs: f32) {
     self.x /= rhs;
     self.y /= rhs;
     self.z /= rhs;
@@ -169,10 +169,10 @@ impl std::ops::MulAssign for Vector3 {
   }
 }
 
-impl std::ops::Mul<f64> for Vector3 {
+impl std::ops::Mul<f32> for Vector3 {
   type Output = Self;
 
-  fn mul(self, rhs: f64) -> Self::Output {
+  fn mul(self, rhs: f32) -> Self::Output {
     Self {
       x: self.x * rhs,
       y: self.y * rhs,
@@ -181,15 +181,15 @@ impl std::ops::Mul<f64> for Vector3 {
   }
 }
 
-impl std::ops::MulAssign<f64> for Vector3 {
-  fn mul_assign(&mut self, rhs: f64) {
+impl std::ops::MulAssign<f32> for Vector3 {
+  fn mul_assign(&mut self, rhs: f32) {
     self.x *= rhs;
     self.y *= rhs;
     self.z *= rhs;
   }
 }
 
-impl std::ops::Mul<Vector3> for f64 {
+impl std::ops::Mul<Vector3> for f32 {
   type Output = Vector3;
 
   fn mul(self, rhs: Vector3) -> Self::Output {

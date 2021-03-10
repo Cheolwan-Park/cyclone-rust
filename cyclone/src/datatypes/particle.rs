@@ -3,15 +3,15 @@ use super::super::integrator;
 
 pub struct Particle {
   pub position: Vector3,
-  pub inv_mass: f64,
-  pub damping: f64,
+  pub inv_mass: f32,
+  pub damping: f32,
   velocity: Vector3,
   accel: Vector3,
   accumulated_force: Vector3 
 }
 
 impl Particle {
-  pub fn new(position: Vector3, inv_mass: f64, damping: f64) -> Self {
+  pub fn new(position: Vector3, inv_mass: f32, damping: f32) -> Self {
     Self {
       position,
       inv_mass: inv_mass,
@@ -40,7 +40,7 @@ impl Particle {
 }
 
 impl integrator::Integratable for Particle {
-  fn integrate(&mut self, duration: f64) {
+  fn integrate(&mut self, duration: f32) {
     if self.inv_mass <= 0.0 {
       return;
     }
